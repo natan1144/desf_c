@@ -64,11 +64,11 @@ int main(void) {
             int faixa;
 
             if (percentual <= 20.0f) {
-                faixa = 0; /* Aprovado        */
+                faixa = 0; 
             } else if (percentual <= 30.0f) {
-                faixa = 1; /* Em analise      */
+                faixa = 1; 
             } else {
-                faixa = 2; /* Reprovado       */
+                faixa = 2; 
             }
 
             switch (faixa) {
