@@ -1,7 +1,3 @@
-/* ============================================================
-   Avaliacao N1 - Sistema de Compra de Carros
-   Linguagem C - Entrada de dados, if/else, switch, for
-   ============================================================ */
 
 #include <stdio.h>
 #include <string.h>
@@ -10,12 +6,12 @@
 #define NOME_TAM 60
 
 int main(void) {
-    /* ---------- Vetores para armazenar os dados de todos os clientes (Etapa 4) ---------- */
+    
     char nomes[MAX_CLIENTES][NOME_TAM];
     float rendas[MAX_CLIENTES];
     float precos[MAX_CLIENTES];
     float parcelas[MAX_CLIENTES];
-    int   status[MAX_CLIENTES];      /* 0 = Aprovado, 1 = Em analise, 2 = Reprovado */
+    int   status[MAX_CLIENTES];     
 
     int qtdClientes;
     int i;
@@ -24,7 +20,7 @@ int main(void) {
     printf("   SISTEMA DE COMPRA DE CARROS\n");
     printf("=========================================\n\n");
 
-    /* ---------- Quantos clientes serao processados ---------- */
+     
     printf("Quantos clientes deseja cadastrar? ");
     scanf("%d", &qtdClientes);
 
@@ -33,14 +29,12 @@ int main(void) {
         return 1;
     }
 
-    /* =====================================================
-       ETAPA 4 - REPETICAO (for): processa varios clientes
-       ===================================================== */
+    
     for (i = 0; i < qtdClientes; i++) {
 
         printf("\n--- Cadastro do cliente %d ---\n", i + 1);
 
-        /* ---------- ETAPA 1 - Entrada de dados ---------- */
+       
         printf("Nome do cliente: ");
         scanf(" %[^\n]", nomes[i]);
 
@@ -50,29 +44,21 @@ int main(void) {
         printf("Preco do carro desejado (R$): ");
         scanf("%f", &precos[i]);
 
-        /* Exibe os dados lidos */
+        
         printf("\nDados lidos -> Nome: %s | Renda: R$ %.2f | Carro: R$ %.2f\n",
                nomes[i], rendas[i], precos[i]);
 
-        /* Parcela estimada: financiamento em 48 meses */
+        
         parcelas[i] = precos[i] / 48.0f;
 
-        /* =====================================================
-           ETAPA 2 - DECISAO SIMPLES (if/else)
-           Regra: a parcela nao pode ultrapassar 30% da renda
-           ===================================================== */
+       
         if (parcelas[i] <= rendas[i] * 0.30f) {
             printf("Resultado inicial: renda SUFICIENTE para a parcela estimada.\n");
         } else {
             printf("Resultado inicial: renda INSUFICIENTE para a parcela estimada.\n");
         }
 
-        /* =====================================================
-           ETAPA 3 - CLASSIFICACAO (switch)
-           Calcula o percentual da renda comprometido com a
-           parcela e usa if/else apenas para definir um codigo
-           inteiro (faixa), que e entao usado no switch.
-           ===================================================== */
+        
         {
             float percentual = (parcelas[i] / rendas[i]) * 100.0f;
             int faixa;
@@ -100,13 +86,11 @@ int main(void) {
                     break;
             }
 
-            status[i] = faixa; /* guarda para o relatorio final */
+            status[i] = faixa; 
         }
     }
 
-    /* =====================================================
-       RELATORIO FINAL COMPLETO
-       ===================================================== */
+   
     printf("\n=========================================\n");
     printf("        RELATORIO FINAL - TODOS OS CLIENTES\n");
     printf("=========================================\n");
